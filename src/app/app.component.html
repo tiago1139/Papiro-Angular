@@ -1,0 +1,47 @@
+<div class="nav-bar">
+  <ul>
+    <li><a href="" class="home"><mat-icon>home</mat-icon></a></li>
+    <li><a href="" class="help"><mat-icon class="help-icon">help_outline</mat-icon></a></li>
+    <li><a href="" class="logo"><img src="favicon.ico" alt="" class="logo-icon">Papiro Reviews</a></li>
+    <li *ngIf="!logged"><a routerLink="/login" class="account"><mat-icon class="account-icon">login</mat-icon> Entrar / Registrar</a></li>
+    <li *ngIf="logged" class="logout" (click)="logout()"><mat-icon class="logout-icon">logout</mat-icon>Sair</li>
+    <li *ngIf="logged"><a routerLink="/account" class="account"><mat-icon class="account-icon">account_circle</mat-icon> Conta</a></li>
+    
+  </ul>
+
+</div>
+
+<div class="wrapper">
+  <div class="search-box-container">
+      <mat-icon class="search-icon">search</mat-icon>
+      <input type="text" placeholder="Procure Livros por Titulo / Autor / ISBN" class="search-box">
+    
+  </div>
+  
+  <button type="button" class="btn btn-primary">Procurar</button>
+
+</div>
+
+<div class="content-box">
+  <div class="grid-container">
+  
+    <div class="side-bar">
+        <div >
+          <a routerLink="/books">Todos</a>
+        </div>
+        <div>
+          <a routerLink="/categories">Categorias</a>
+        </div>
+        <div>
+          <a routerLink="/favorites">Favoritos</a>
+        </div>
+        <div *ngIf="admin">
+          <a routerLink="/add-book">Criar Livro</a>
+        </div>
+    </div>
+    <router-outlet class="route"></router-outlet>
+    
+  </div>
+
+</div>
+
