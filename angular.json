@@ -29,7 +29,7 @@
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "deploy": "ng deploy --base-href=https://tiago1139.github.io/Papiro-Angular/",
+              
             ]
           },
           "configurations": {
