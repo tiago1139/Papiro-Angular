@@ -1,7 +1,7 @@
 const PROXY_CONFIG = [
     {
         context:['/api'],
-        target: 'http://localhost:8080/',
+        target: 'https://papiro-spring-api.herokuapp.com/',
         secure:false,
         logLevel : 'debug'
     }
