@@ -16,23 +16,7 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
     </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -40,18 +24,31 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Papiro App][product-screenshot]](https://tiago1139.github.io/Papiro-Angular/)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+[PT]<br/><br/>
+O Papiro Reviews é uma aplicação web criada usando as tecnologias Spring (Java) , Angular (JS, TS) e SQL (Base de Dados).
+É uma aplicação de "book review", ou seja, pretende que os utilizadores pesquisem e encontrem livros podendo dar-lhes uma
+avaliação na forma de estrelas ou então em texto.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+Outra funcionalidade da aplicação é poder recomendar livros a outros utilizadores (ainda por implementar ...)
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
+Na aplicação qualquer pessoa tem acesso aos livros existentes, porém só com uma conta criada é que poderá fazer avaliações
+aos livros bem como recomendar livros, etc.
 
-Use the `BLANK_README.md` to get started.
+Só um "admin" é que tem permissão para criar, editar e apagar livros.
+
+[EN]<br/><br/>
+Papiro Reviews is a web application created using Spring (Java), Angular (JS, TS) and SQL (Database) technologies.
+It is a "book review" application. it wants users to search and find books, being able to give them a
+rating in the form of stars or in text.
+
+Another feature of the application is to be able to recommend books to other users (still to be implemented...)
+
+In the application, anyone has access to existing books, but only with an account created will they be able to make evaluations
+to books as well as recommending books, etc.
+
+Only an "admin" is allowed to create, edit and delete books.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -74,7 +71,7 @@ Use the `BLANK_README.md` to get started.
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/tiago-pinto-dev/
 
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: papiro-app.png
 
 [Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
 [Angular-url]: https://angular.io/
