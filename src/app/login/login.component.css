@@ -2,11 +2,16 @@
     margin-left: 100px;
     margin-top: 40px;
     width: 400px;
+    
 }
 
 .card-header {
     font-size: large;
     font-weight: 500;
+}
+
+.card-body {
+    
 }
 
 mat-form-field {
@@ -15,4 +20,23 @@ mat-form-field {
 
 .forms-container {
     display: flex;
+}
+
+#loginButton {
+    width: 100%;
+}
+
+#registerButton {
+    width: 100%;
+}
+
+.form-group {
+    margin-top: auto;
+}
+
+form {
+    display: flex;
+	flex-direction: column;
+    height: 100%;
+    
 }

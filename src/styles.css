@@ -38,3 +38,17 @@ app-root {
     background-color: rgb(6, 160, 1);
     color:lightgoldenrodyellow;
   }
+
+  .login-snackbar {
+    position: absolute !important; top: 40%;
+    left: 25%;
+    background-color: rgb(153, 50, 50);
+    color:lightgoldenrodyellow;
+  }
+
+  .register-snackbar {
+    position: absolute !important; top: 65%;
+    right: 29%;
+    background-color: rgb(153, 50, 50);
+    color:lightgoldenrodyellow;
+  }

@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 import { BooksService } from '../services/books.service';
 import { Book } from '../models/book';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-book',
@@ -16,6 +17,8 @@ export class CreateBookComponent implements OnInit {
   btnState: boolean = true;
   toppings = new FormControl('');
 
+  loading = false;
+
   toppingList: string[] = ['Filosofia', 'Poesia', 'Clássicos', 'Contemporâneo', 
   'Estrangeiro', 'Nacional', 'Catolicismo', 'História'];
 
@@ -24,7 +27,8 @@ export class CreateBookComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private bookService: BooksService,
-    private sanitizer: DomSanitizer) {
+    private sanitizer: DomSanitizer,
+    private snack: MatSnackBar) {
     this.form = this.formBuilder.group({
       title: [null],
       author: [null],
@@ -61,6 +65,8 @@ export class CreateBookComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loading = true;
+    this.form.disable();
     const book = {} as Book
     book.title = this.form.get('title')?.value;
     book.author = this.form.get('author')?.value;
@@ -74,9 +80,21 @@ export class CreateBookComponent implements OnInit {
     this.bookService.saveBook(formData)
     .subscribe(
       resp => {
+        setTimeout(() => {
+          this.snack.open(" Livro adicionado com Sucesso ", undefined, {duration: 4000,  panelClass: ['green-snackbar']});
+          setTimeout(() => {
+            location.reload();
+          }, 2000);
+        }, 2000);
         console.log(resp.body);
       },
       err => {
+        setTimeout(() => {
+          this.loading = false;
+          this.form.enable();
+          this.snack.open("Falha ao adicionar Livro !", undefined, {duration: 4000,  panelClass: ['red-snackbar']});
+
+        }, 2000);
         console.log(err);
  
       });

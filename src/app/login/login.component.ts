@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login() {
+  async login() {
     this.submitted = true;
 
     // stop here if form is invalid
@@ -54,7 +54,31 @@ export class LoginComponent implements OnInit {
     }
 
     this.loadingLogin = true;
-    this.accountService.login(this.loginForm.get('username')?.value, this.loginForm.get('password')?.value);
+    this.loginForm.disable();
+    
+    let l = await this.accountService.login(this.loginForm.get('username')?.value, this.loginForm.get('password')?.value);
+
+    if(typeof l === 'boolean') {
+      if(!l) {
+        setTimeout(() => {
+          this.loadingLogin = false;
+          this.loginForm.enable();
+          this.snack.open("Username ou Password incorretos ! :C", undefined, {duration: 4000,  panelClass: ['red-snackbar']});
+
+        }, 2000);
+      }
+    } else {
+        setTimeout(() => {
+          this.loadingLogin = false;
+          this.loginForm.enable();
+          this.snack.open("Username ou Password incorretos ! :C", undefined,
+           {duration: 4000,
+            panelClass: ['login-snackbar']
+          });
+
+        }, 2000);
+    }
+    
   }
 
   register() {
@@ -63,19 +87,31 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.loadingRegister = true;
+    this.registerForm.disable();
+
     this.accountService.getByName(this.registerForm.get('username')?.value)
     .subscribe(u => {
       if(!u) {
         console.log("username livre!");
-        this.accountService.register(this.registerForm.value).subscribe(resp => console.log(resp));
-        this.registerForm.reset();
-        this.snack.open("Conta criada com sucesso,\n será rederecionado em 5 segundos", undefined, {duration: 4000,  panelClass: ['green-snackbar']});
-        setTimeout(() => {
-          this.router.navigate(['/']);
-        }, 5000);
+        this.accountService.register(this.registerForm.value).subscribe(resp => {
+          console.log(resp);
+          this.snack.open("Conta criada com sucesso,\n será rederecionado em 5 segundos", undefined, {duration: 4000,  panelClass: ['green-snackbar']});
+          setTimeout(() => {
+            this.accountService.login(this.registerForm.get('username')?.value, this.registerForm.get('password')?.value);
+          }, 5000);
+        });
       } else {
-        console.log("username ocupado!");
-        this.registed = true;
+        setTimeout(() => {
+          console.log("username ocupado!");
+          this.registed = true;
+          this.loadingRegister = false;
+          this.registerForm.enable();
+          this.snack.open("O Username escolhido já existe ! :C", undefined,
+           {duration: 4000,
+            panelClass: ['register-snackbar']
+          });
+
+        }, 2000);
       }
     });
 

@@ -73,7 +73,8 @@ ul {
     position: absolute;
     left: 42%;
     text-transform: uppercase;
-    font-family: "Sofia", sans-serif;
+    font-family:'Times New Roman', Times, serif;
+    font-weight: 600;
     font-size: large;
 
     

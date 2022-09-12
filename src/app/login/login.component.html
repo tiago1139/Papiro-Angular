@@ -15,7 +15,7 @@
                     </button>
                 </mat-form-field>
                 <div class="form-group">
-                    <button [disabled]="loadingLogin || loginForm.invalid" class="btn btn-primary" (click)="login()">
+                    <button [disabled]="loadingLogin || loginForm.invalid" class="btn btn-primary" (click)="login()" id="loginButton">
                         <span *ngIf="loadingLogin" class="spinner-border spinner-border-sm mr-1"></span>
                         Login
                     </button>
@@ -50,16 +50,13 @@
                     
                 </mat-form-field>
                 <div class="form-group">
-                    <button [disabled]="loadingRegister || registerForm.invalid" class="btn btn-primary" (click)="register()">
+                    <button [disabled]="loadingRegister || registerForm.invalid" class="btn btn-primary" (click)="register()" id="registerButton">
                         <span *ngIf="loadingRegister" class="spinner-border spinner-border-sm mr-1"></span>
                         Criar
                     </button>
 
                 </div>
             </form>
-            <div *ngIf="registed">
-                <h2>Erro: Username já criado! Escolha outro</h2>
-            </div>
         </div>
     </div>
 

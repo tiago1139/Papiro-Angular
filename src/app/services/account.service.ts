@@ -25,7 +25,7 @@ export class AccountService {
       return this.userSubject.value;
   }
 
-  login(username: any, password: any) {
+  async login(username: any, password: any): Promise<any> {
     let temp : User;
     this.getByName(username).subscribe(u => {
       temp = u;
@@ -35,8 +35,11 @@ export class AccountService {
         }
         sessionStorage.setItem('user', JSON.stringify(u));
         this.userSubject.next(u);
-        window.location.href = 'http://localhost:4200/';
+        window.location.href = '';
+        return true;
 
+      } else {
+        return false;
       }
     });
     
