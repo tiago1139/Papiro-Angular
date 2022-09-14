@@ -32,10 +32,13 @@
 
 
 .card {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     margin-bottom: 10px;
     border-radius: 10px;
     transition: 0.3s;
+    
 
 }
 
@@ -49,26 +52,30 @@
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
+    justify-content: space-between;
     width: 98%;
     margin-left: 1%;
     margin-top: 5px;
-    padding-bottom: 5px;
-    height: 100%;
+    padding-bottom: 150px;
+    
+    
     
     
 }
 
 .cards-container a {
     width: 15%;
-    margin-right: 10px;
     text-decoration: none;
     align-self: normal;
+    display: flex;
 }
 
 .card-img-container {
     margin-top: 5%;
     display: flex;
     justify-content: center;
+    
+    
 }
 
 .card-img {
@@ -77,7 +84,7 @@
 }
 
 .card-info {
-    
+    margin-top: auto;
     margin-left: 5px;
     
 }

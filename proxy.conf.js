@@ -1,3 +1,7 @@
+/*
+
+// PRODUCTION
+
 const PROXY_CONFIG = [
     {
         context:['/api'],
@@ -6,5 +10,7 @@ const PROXY_CONFIG = [
         logLevel : 'debug'
     }
 ];
+*/
 
-module.exports = PROXY_CONFIG;
+// DEVELOPMENT
+

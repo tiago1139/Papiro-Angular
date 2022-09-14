@@ -34,6 +34,8 @@
     margin-bottom: 10px;
     border-radius: 10px;
     transition: 0.3s;
+    display: flex;
+    flex-direction: column;
 
 }
 
@@ -47,33 +49,34 @@
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
+    justify-content: space-between;
     width: 98%;
     margin-left: 1%;
     margin-top: 5px;
-    padding-bottom: 5px;
+    padding-bottom: 150px;
     
     
 }
 
 .cards-container a {
     width: 15%;
-    margin-right: 10px;
     text-decoration: none;
+    align-self: normal;
+    display: flex;
 }
 
 .card-img-container {
     margin-top: 5%;
     display: flex;
-
     justify-content: center;
 }
 
 .card-img {
-    width: 60%;
+    width: 70%;
 }
 
 .card-info {
-    
+    margin-top: auto;
     margin-left: 5px;
     
 }

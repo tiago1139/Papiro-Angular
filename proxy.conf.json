@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target": "https://papiro-spring-api.herokuapp.com",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}
