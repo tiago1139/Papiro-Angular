@@ -50,6 +50,9 @@ to books as well as recommending books, etc.
 
 Only an "admin" is allowed to create, edit and delete books.
 
+Admin Access for testing:
+username: admin
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
