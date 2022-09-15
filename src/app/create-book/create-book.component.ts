@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { BooksService } from '../services/books.service';
 import { Book } from '../models/book';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CategoryService } from '../services/category.service';
+import { Category } from '../models/category';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-book',
@@ -19,34 +22,33 @@ export class CreateBookComponent implements OnInit {
 
   loading = false;
 
-  toppingList: string[] = ['Filosofia', 'Poesia', 'Clássicos', 'Contemporâneo', 
-  'Estrangeiro', 'Nacional', 'Catolicismo', 'História'];
+  toppingList: any;
 
   form: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private bookService: BooksService,
+    private catService: CategoryService,
     private sanitizer: DomSanitizer,
+    private router: Router,
     private snack: MatSnackBar) {
-    this.form = this.formBuilder.group({
-      title: [null],
-      author: [null],
-      isbn: [null],
-      categories: [null],
-      cover: [null],
-      rank:[null]
-      
-    });
+
+      this.catService.getAllCategories().subscribe(categories => {
+        this.toppingList = categories;
+      });
+
+      this.form = new FormGroup({
+        title: new FormControl('', [Validators.required]),
+        author: new FormControl('', [Validators.required]),
+        isbn: new FormControl('', [Validators.required]),
+        cover: new FormControl('', [Validators.required]),
+        categories: new FormControl('', [Validators.required]),
+      });
    }
 
   ngOnInit(): void {
-    this.form.controls['title'].setValue(null);
-    this.form.controls['author'].setValue(null);
-    this.form.controls['isbn'].setValue(null);
-    this.form.controls['cover'].setValue(null);
-    this.form.controls['categories'].setValue(null);
-    this.form.controls['rank'].setValue(null);
+
   }
 
   onChange(event:any) {
@@ -71,6 +73,7 @@ export class CreateBookComponent implements OnInit {
     book.title = this.form.get('title')?.value;
     book.author = this.form.get('author')?.value;
     book.isbn = this.form.get('isbn')?.value;
+    let categorias:Category[] = this.form.get('categories')?.value;
 
     const formData = new FormData();
     formData.append('cover', this.file);
@@ -79,14 +82,23 @@ export class CreateBookComponent implements OnInit {
 
     this.bookService.saveBook(formData)
     .subscribe(
-      resp => {
+      async resp => {
+        console.log(resp.body);
+        console.log(categorias.length);
+        for (const cat of categorias) {
+          cat.books.push(resp.body as Book);
+          let resposta = await (await this.catService.updateCategory(cat._id, cat)).toPromise();
+          console.log(resposta);
+          console.log("Categoria: "+cat.name);
+        }
+        
         setTimeout(() => {
           this.snack.open(" Livro adicionado com Sucesso ", undefined, {duration: 4000,  panelClass: ['green-snackbar']});
           setTimeout(() => {
-            location.reload();
+            this.router.navigate(['/book/'+(resp.body as Book)._id]);
           }, 2000);
         }, 2000);
-        console.log(resp.body);
+        
       },
       err => {
         setTimeout(() => {

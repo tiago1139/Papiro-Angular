@@ -16,6 +16,8 @@ import { HomeComponent } from './home/home.component';
 import { AppMaterialModule } from './shared/app-material/app-material.module';
 import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 
 @NgModule({
@@ -28,6 +30,8 @@ import { AccountComponent } from './account/account.component';
     CreateBookComponent,
     LoginComponent,
     AccountComponent,
+    CategoriesComponent,
+    FavoritesComponent,
   ],
   imports: [
     BrowserModule,

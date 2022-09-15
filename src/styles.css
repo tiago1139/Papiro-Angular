@@ -30,13 +30,18 @@ app-root {
   }
 
   .red-snackbar{
+    text-align: center !important;
+    word-spacing: 3px;
     background-color: rgb(153, 50, 50);
-    color:lightgoldenrodyellow;
+    color:white;
+    font-size:x-large;
+    font-weight: 500;
   }
 
   .green-snackbar{
     background-color: rgb(6, 160, 1);
-    color:lightgoldenrodyellow;
+    color:white;
+    font-weight: 500;
   }
 
   .login-snackbar {

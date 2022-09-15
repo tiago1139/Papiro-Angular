@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
           this.loginForm.enable();
           this.snack.open("Username ou Password incorretos ! :C", undefined,
            {duration: 4000,
-            panelClass: ['login-snackbar']
+            panelClass: ['red-snackbar']
           });
 
         }, 2000);
@@ -108,7 +108,7 @@ export class LoginComponent implements OnInit {
           this.registerForm.enable();
           this.snack.open("O Username escolhido já existe ! :C", undefined,
            {duration: 4000,
-            panelClass: ['register-snackbar']
+            panelClass: ['red-snackbar']
           });
 
         }, 2000);

@@ -1,3 +1,4 @@
+import { Category } from "./category";
 import { Rating } from "./rating";
 
 export interface Book {
@@ -5,7 +6,7 @@ export interface Book {
     title:string;
     author:string;
     isbn:string;
-    categories:string[];
+    categories:Category[];
     rank:number;
     cover:string;
 

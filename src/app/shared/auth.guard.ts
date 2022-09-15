@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -7,7 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+    private snack: MatSnackBar) {
 
   }
   canActivate() {
@@ -15,6 +17,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
     this.router.navigate(['/login']);
+    this.snack.open("Entre ou Crie uma conta para ter Favoritos", undefined, {duration: 4000,  panelClass: ['red-snackbar']});
     return false;
   }
   
