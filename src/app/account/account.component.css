@@ -65,3 +65,35 @@
     font-weight: 300;
     margin-left: 10px;
 }
+
+
+@media (max-width: 600px) {
+
+    .block-wrap {
+        
+        margin-bottom: 5px;
+        margin-left: 10px;
+        width: 100%;
+        height: 100%;
+        
+          
+    }
+
+    .block-header {
+        margin-top: 5px;
+        margin-left: 1%;
+        width: 90%;
+        height: 35px;
+       
+        border-bottom: 1px solid rgb(186, 202, 223);
+        
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .info-container {
+        width: 100%;
+    }
+}

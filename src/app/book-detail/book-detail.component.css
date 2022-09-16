@@ -189,6 +189,12 @@
         display: flex;
         flex-direction: column;
         float: none;
+        margin-top: 10px;
+        justify-content: space-between;
         
+    }
+
+    .book-cover-container {
+        margin-bottom: 15px;
     }
 }
