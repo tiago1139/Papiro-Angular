@@ -220,3 +220,74 @@ transform: scale(1.25, 1.25);
   float: right;
   border-left: 1px solid #ddd;
 }
+
+/*MOBILE*/
+
+@media (max-width: 600px)
+{
+  .nav-bar {
+    width: 100%;
+  }
+
+  .nav-bar ul {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    justify-content: center;
+  }
+
+  li {
+    text-align: center;
+    transition: 0.3s;
+    border-bottom: 1px solid white;
+  }
+
+  li:last-child {
+    text-align: center;
+    float: none !important;
+  }
+
+  li:hover {
+    background-color: #10bbd5;
+  }
+
+  .logo-icon {
+    width: 10px;
+    
+  }
+
+  .logo {
+    visibility: hidden;
+  }
+
+  .account {
+    border: none;
+  }
+
+  .search-box-container {
+    display:flex;
+    align-items: center;
+    top: 45px;
+    width: 65%;
+    height: 40px;
+    background-color: white;
+    margin-right: 10px;
+    
+  }
+
+  .side-bar {
+  
+    width: 90%;
+    margin-left: 10px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+  .grid-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
