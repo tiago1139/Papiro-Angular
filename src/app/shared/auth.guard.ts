@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
     this.router.navigate(['/login']);
-    this.snack.open("Entre ou Crie uma conta para ter Favoritos", undefined, {duration: 4000,  panelClass: ['red-snackbar']});
+    this.snack.open(" Entre ou Crie uma conta ", undefined, {duration: 4000,  panelClass: ['red-snackbar']});
     return false;
   }
   
