@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 
 
@@ -29,12 +29,21 @@ export class BookDetailComponent implements OnInit {
 
   formModal: any;
 
+  loading: boolean;
+
+  spinnerSize: number;
+
   constructor(
     private bookService: BooksService,
     private ratingService: RatingService,
     private route: ActivatedRoute,
     private router: Router
   ) {
+
+    this.loading = false;
+    
+    this.spinnerSize = this.getScreenSize()/4;
+
     if(sessionStorage.getItem('admin')) {
       this.admin = true;
     } else {
@@ -66,6 +75,11 @@ export class BookDetailComponent implements OnInit {
     );
   }
 
+  @HostListener('window:resize', ['$event'])
+  getScreenSize() : number{
+         return window.innerWidth;
+  }
+
   async getUser() {
     if(sessionStorage.getItem("user")) {
       this.user = await JSON.parse(sessionStorage.getItem("user") || "{}");
@@ -94,12 +108,16 @@ export class BookDetailComponent implements OnInit {
   }
 
   avaliar(): void {
+    this.loading = true;
+
     if(this.user == null) {
       console.log("USER NULL");
+      this.loading = false;
       return;
     }
     if(this.book == null) {
       console.log("BOOK NULL");
+      this.loading = false;
       return;
     }
     if(this.userRating) {

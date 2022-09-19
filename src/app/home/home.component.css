@@ -1,4 +1,15 @@
 
+:host ::ng-deep mat-spinner circle {
+    stroke: blue;
+}
+
+.spinner {
+    margin-left: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+
 .block-wrap {
     margin: auto;
     margin-bottom: 5px;

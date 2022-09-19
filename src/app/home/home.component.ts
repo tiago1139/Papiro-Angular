@@ -15,8 +15,12 @@ export class HomeComponent implements OnInit {
   currentRate = 0;
   books!:Book[];
   panelOpenState = false;
+
+  loading: boolean;
   constructor(private booksService: BooksService,
     private ratingService: RatingService) {
+    
+    this.loading = true;
     this.booksService.getAllBooks()
     .subscribe(async res => {
       let books = res;
@@ -27,6 +31,9 @@ export class HomeComponent implements OnInit {
       }
       console.log("PASSSSA");
       this.books = books.sort(({rank:a}, {rank:b}) => b - a).slice(0, 6);
+      setTimeout(() => {
+        this.loading = false;
+       }, 2000);
       
     });
 

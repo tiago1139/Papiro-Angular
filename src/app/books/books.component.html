@@ -3,7 +3,7 @@
         <h2 class="block-title">Todos</h2>
     </div>
     
-    <div class="cards-container">
+    <div class="cards-container" *ngIf="!loading">
       <a *ngFor="let book of books" routerLink="/book/{{book._id}}">
         <div class="card">
           <div class="card-img-container">
@@ -21,4 +21,8 @@
   
     </div>
   
-  </div>
+</div>
+
+<div *ngIf="loading" class="spinner">
+  <mat-spinner strokeWidth="10"></mat-spinner>
+</div>

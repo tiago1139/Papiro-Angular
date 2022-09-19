@@ -16,23 +16,31 @@ export class BooksComponent implements OnInit {
   currentRate = 0;
   books!: Book[];
 
+  loading: boolean;
+
   constructor(
     private booksService: BooksService,
     private ratingService: RatingService,
     private sanitizer: DomSanitizer
   ) {
-    this.booksService.getAllBooks().subscribe(books => {
+    this.loading = true;
+
+    this.booksService.getAllBooks().subscribe(async books => {
       this.books = books;
-      for(let b of this.books) {
-        this.getRating(b)
+
+      for (let b of this.books) {
+        await this.getRating(b);
       }
+      setTimeout(() => {
+       this.loading = false;
+      }, 2000);
     });
    }
 
   ngOnInit(): void {
   }
 
-  getRating(book:Book) : any {
+  async getRating(book:Book) : Promise<any> {
     let result = 0;
     let ratings : Rating[];
     this.ratingService.getRatingsByBook(book)
