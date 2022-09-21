@@ -20,6 +20,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
     LoginComponent,
     AccountComponent,
     CategoriesComponent,
-    FavoritesComponent,
+    FavoritesComponent  
   ],
   imports: [
     BrowserModule,

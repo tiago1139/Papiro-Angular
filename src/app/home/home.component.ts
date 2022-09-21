@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+
 
 import { Book } from '../models/book';
-import { Rating } from '../models/rating';
+
 import { BooksService } from '../services/books.service';
+
 import { RatingService } from '../services/rating.service';
 
 @Component({
@@ -20,27 +21,34 @@ export class HomeComponent implements OnInit {
   constructor(private booksService: BooksService,
     private ratingService: RatingService) {
     
-    this.loading = true;
-    this.booksService.getAllBooks()
-    .subscribe(async res => {
-      let books = res;
-      for(let b of books) {
-        await this.getRating(b);
-        console.log("Entrou");
-        console.log("B RANK === "+b.rank);
-      }
-      console.log("PASSSSA");
-      this.books = books.sort(({rank:a}, {rank:b}) => b - a).slice(0, 6);
-      setTimeout(() => {
-        this.loading = false;
-       }, 2000);
-      
-    });
+      this.loading = true;
+      this.booksService.getAllBooks()
+      .subscribe(async res => {
+        let books = res;
+        for(let b of books) {
+          await this.getRating(b);
+          console.log("Entrou");
+          console.log("B RANK === "+b.rank);
+        }
+        console.log("PASSSSA");
+        this.books = books.sort(({rank:a}, {rank:b}) => b - a).slice(0, 6);
+        setTimeout(() => {
+          this.loading = false;
+        }, 2000);
+        
+      });
+
+      window.addEventListener("load", this.stopSpinner);
 
 
    }
 
   ngOnInit(): void {
+  }
+
+  stopSpinner() {
+    console.log("SPINNER OFF");
+    this.loading = false;
   }
 
   async getRating(book:Book) : Promise<any> {

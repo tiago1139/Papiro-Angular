@@ -35,9 +35,16 @@ export class BooksComponent implements OnInit {
        this.loading = false;
       }, 2000);
     });
+
+    window.addEventListener("load", this.stopSpinner);
    }
 
   ngOnInit(): void {
+  }
+
+  stopSpinner() {
+    console.log("SPINNER OFF");
+    this.loading = false;
   }
 
   async getRating(book:Book) : Promise<any> {
