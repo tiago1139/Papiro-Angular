@@ -4,7 +4,7 @@
     </div>
     
     <div class="cards-container" *ngIf="!loading">
-      <a *ngFor="let book of books" routerLink="/book/{{book._id}}">
+      <a *ngFor="let book of books |filter:this.searchService.term"  routerLink="/book/{{book._id}}">
         <div class="card">
           <div class="card-img-container">
             <img [src]="safeUrl(book.cover)" alt="" class="card-img">

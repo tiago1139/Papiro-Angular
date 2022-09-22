@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 
@@ -6,6 +6,7 @@ import { Book } from '../models/book';
 import { Rating } from '../models/rating';
 import { BooksService } from '../services/books.service';
 import { RatingService } from '../services/rating.service';
+import { SearchService } from '../services/search.service';
 
 @Component({
   selector: 'app-books',
@@ -15,14 +16,17 @@ import { RatingService } from '../services/rating.service';
 export class BooksComponent implements OnInit {
   currentRate = 0;
   books!: Book[];
-
+  @Input() term:any;
   loading: boolean;
+  searchService:any;
 
   constructor(
     private booksService: BooksService,
     private ratingService: RatingService,
+    searchService: SearchService,
     private sanitizer: DomSanitizer
   ) {
+    this.searchService = searchService;
     this.loading = true;
 
     this.booksService.getAllBooks().subscribe(async books => {

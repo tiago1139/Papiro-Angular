@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from './services/account.service';
+import { SearchService } from './services/search.service';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,15 @@ export class AppComponent implements OnInit{
   title = 'papiro-angular';
   logged : boolean;
   admin: boolean;
+  term:any;
+searchService: any;
 
-  constructor(private accountService: AccountService) {
+  constructor(
+    private accountService: AccountService,
+    searchService: SearchService
+  ) 
+  {
+    this.searchService = searchService;
     if (sessionStorage.getItem('user')) {
       this.logged = true;
       if(sessionStorage.getItem('admin')) {
