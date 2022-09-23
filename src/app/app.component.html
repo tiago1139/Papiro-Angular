@@ -11,7 +11,7 @@
 
 </div>
 
-<div class="wrapper">
+<div class="wrapper" *ngIf="showSearch">
   <div class="search-box-container">
       <mat-icon class="search-icon">search</mat-icon>
       <input type="text" [(ngModel)]="this.searchService.term" placeholder="Procure Livros por Titulo / Autor / ISBN" class="search-box">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationStart, Event as NavigationEvent } from '@angular/router';
 import { AccountService } from './services/account.service';
 import { SearchService } from './services/search.service';
 
@@ -12,13 +13,29 @@ export class AppComponent implements OnInit{
   logged : boolean;
   admin: boolean;
   term:any;
-searchService: any;
+  searchService: any;
+
+  showSearch: boolean = false;
 
   constructor(
     private accountService: AccountService,
-    searchService: SearchService
+    searchService: SearchService,
+    private router: Router
   ) 
   {
+    this.router.events
+          .subscribe(
+            (event: NavigationEvent) => {
+              if(event instanceof NavigationStart) {
+                console.log(event.url);
+                if(event.url === '/books') {
+                  this.showSearch = true;
+                } else {
+                  this.showSearch = false;
+                }
+              }
+    });
+            
     this.searchService = searchService;
     if (sessionStorage.getItem('user')) {
       this.logged = true;

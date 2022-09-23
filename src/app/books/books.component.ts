@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Book } from '../models/book';
 import { Rating } from '../models/rating';
+import { BookfilterPipe } from '../pipes/bookfilter.pipe';
 import { BooksService } from '../services/books.service';
 import { RatingService } from '../services/rating.service';
 import { SearchService } from '../services/search.service';
@@ -13,7 +14,7 @@ import { SearchService } from '../services/search.service';
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.css']
 })
-export class BooksComponent implements OnInit {
+export class BooksComponent implements OnInit{
   currentRate = 0;
   books!: Book[];
   @Input() term:any;

@@ -19,6 +19,8 @@ import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { BookfilterPipe } from './pipes/bookfilter.pipe';
+
 
 
 
@@ -33,7 +35,8 @@ import { FavoritesComponent } from './favorites/favorites.component';
     LoginComponent,
     AccountComponent,
     CategoriesComponent,
-    FavoritesComponent  
+    FavoritesComponent,
+    BookfilterPipe,
   ],
   imports: [
     BrowserModule,
