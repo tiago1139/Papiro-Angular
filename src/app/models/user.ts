@@ -7,6 +7,8 @@
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
+import { Book } from "./book";
+
 export interface User {
     _id:       string;
     username:  string;
@@ -14,6 +16,7 @@ export interface User {
     firstName: string;
     lastName:  string;
     email: string;
+    favorites: Book[];
 }
 
 // Converts JSON strings to/from your types

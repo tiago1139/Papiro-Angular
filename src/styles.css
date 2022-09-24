@@ -44,6 +44,12 @@ app-root {
     font-weight: 500;
   }
 
+  .yellow-snackbar{
+    background-color: rgb(255, 238, 0);
+    color:white;
+    font-weight: 500;
+  }
+
   .login-snackbar {
     position: absolute !important; top: 40%;
     left: 25%;

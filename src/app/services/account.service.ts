@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, map, Observable, tap } from 'rxjs';
@@ -12,6 +12,10 @@ export class AccountService {
   
   private userSubject: BehaviorSubject<User>;
   public user: Observable<User>;
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(
       private router: Router,
@@ -72,6 +76,12 @@ export class AccountService {
   getByName(name: string): Observable<User> {
     
     return this.http.get<User>(`${environment.apiUrl}/users/name/${name}`);
+  }
+
+  async updateUser(id: string, user: User) {
+    sessionStorage.setItem('user', JSON.stringify(user));
+    const url = `${environment.apiUrl}/users/id/${id}`;
+    return this.http.put(url, user, this.httpOptions);
   }
 
 

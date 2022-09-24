@@ -7,6 +7,8 @@ import { Rating } from '../models/rating';
 import { Convert, User } from '../models/user';
 import { BooksService } from '../services/books.service';
 import { RatingService } from '../services/rating.service';
+import { AccountService } from '../services/account.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 declare var window: any;
 
@@ -33,11 +35,15 @@ export class BookDetailComponent implements OnInit {
 
   spinnerSize: number;
 
+  favorite!: boolean;
+
   constructor(
     private bookService: BooksService,
     private ratingService: RatingService,
+    private userService: AccountService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private snack: MatSnackBar
   ) {
 
     this.loading = false;
@@ -53,6 +59,9 @@ export class BookDetailComponent implements OnInit {
     this.getUser();
     this.getBook().subscribe(book => {
       this.book = book;
+      this.favorite = this.user.favorites.some(elem =>{
+        return JSON.stringify(this.book) === JSON.stringify(elem);
+      });
       this.getUserRating()?.subscribe(rating => {
         this.userRating = rating;
         this.rate = this.userRating?.value == null ? 0 : this.userRating.value;
@@ -165,6 +174,33 @@ export class BookDetailComponent implements OnInit {
       this.formModal.hide();
       this.router.navigate(['/']);
     });
+  }
+
+  async addFavorite() {
+    this.loading = true;
+    this.user.favorites.push(this.book);
+
+    let resposta = await (await this.userService.updateUser(this.user._id, this.user)).toPromise();
+    this.favorite = true;
+    this.loading = false;
+    this.snack.open("Livro adicionado aos favoritos com sucesso", undefined, {duration: 4000,  panelClass: ['green-snackbar']});
+  }
+
+  async removeFavorite() {
+    this.loading = true;
+    console.log("BOOK");
+    console.log(JSON.stringify(this.book));
+    this.user.favorites = this.user.favorites.filter(obj => {
+      console.log("FAVORITO");
+      console.log(JSON.stringify(obj));
+      return JSON.stringify(this.book) !== JSON.stringify(obj);
+    });
+    console.log(this.user.favorites);
+
+    let resposta = await (await this.userService.updateUser(this.user._id, this.user)).toPromise();
+    this.favorite = false;
+    this.loading = false;
+    this.snack.open("Livro removido dos favoritos com sucesso", undefined, {duration: 4000,  panelClass: ['yellow-snackbar']});
   }
 
   openModal() {

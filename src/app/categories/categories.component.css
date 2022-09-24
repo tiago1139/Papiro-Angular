@@ -54,7 +54,8 @@
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 10px;
     width: 98%;
     margin-left: 1%;
     margin-top: 5px;
@@ -66,7 +67,7 @@
 }
 
 .cards-container a {
-    width: 15%;
+    width: 15.8%;
     text-decoration: none;
     align-self: normal;
     display: flex;
