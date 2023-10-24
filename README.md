@@ -9,6 +9,8 @@
 # :books: Papiro Reviews :books:
 
 :arrow_right: [Papiro Reviews App](https://tiago1139.github.io/Papiro-Angular/) <br/><br/>
+:arrow_right: [Papiro Reviews App 2](https://653814d3f6a695009b21b1d2--roaring-tanuki-c8ea22.netlify.app/index) <br/><br/>
+
 
 <!-- TABLE OF CONTENTS -->
 <details>
